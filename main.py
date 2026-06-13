@@ -1,16 +1,31 @@
 import random
 
-print("Welcome to Guess The Number")
 
-secret_number = random.randint(1, 10)
+def get_secret_number():
+    return random.randint(1, 10)
 
-guess = int(input("Enter a number between 1 and 10: "))
 
-if guess == secret_number:
-    print("Correct!")
+def check_guess(secret_number, guess):
 
-elif guess < secret_number:
-    print("Too low!")
+    if guess < secret_number:
+        return "Too low!"
 
-else:
-    print("Too high!")
+    elif guess > secret_number:
+        return "Too high!"
+
+    else:
+        return "Correct!"
+
+
+secret_number = get_secret_number()
+
+while True:
+
+    guess = int(input("Enter a number between 1 and 10: "))
+
+    result = check_guess(secret_number, guess)
+
+    print(result)
+
+    if result == "Correct!":
+        break
